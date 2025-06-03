@@ -1,0 +1,1283 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nail Polish Gallery</title>
+<style>
+    body { font-family: Arial; }
+    .filters { margin-bottom: 20px; }
+    .card { margin: 10px; padding: 10px; border: 1px solid #ccc; width: 140px; text-align: center; display: inline-block; }
+    #skittleBar { margin: 20px 0; padding: 10px; border: 2px dashed #666; }
+</style>
+</head>
+<body>
+
+<h1>Nail Polish Gallery + Skittle Builder</h1>
+
+<div class="filters">
+    <label>Brand:
+        <select id="brandFilter">
+            <option value="">All</option>
+            <option value="atomic">Atomic</option><option value="bkl">BKL</option><option value="by dany vianna">By Dany Vianna</option><option value="clionadh">Clionadh</option><option value="cupcake polish">Cupcake Polish</option><option value="emily de molly">Emily de Molly</option><option value="fancy gloss">Fancy Gloss</option><option value="holo taco">Holo Taco</option><option value="ilnp">ILNP</option><option value="kbshimmer">KBShimmer</option><option value="lynbdesigns">LynBDesigns</option><option value="mooncat">Mooncat</option><option value="olive and june">Olive and June</option><option value="polished for days">Polished for Days</option><option value="rogue lacquer">Rogue Lacquer</option><option value="uberchic">UberChic</option>
+        </select>
+    </label>
+    <label>Color:
+        <select id="colorFilter">
+            <option value="">All</option>
+            <option value="black">Black</option><option value="blue">Blue</option><option value="brown">Brown</option><option value="clear">Clear</option><option value="gold">Gold</option><option value="green">Green</option><option value="iridescent">Iridescent</option><option value="orange">Orange</option><option value="peach">Peach</option><option value="pink">Pink</option><option value="purple">Purple</option><option value="red">Red</option><option value="silver">Silver</option><option value="teal">Teal</option><option value="white">White</option><option value="yellow">Yellow</option>
+        </select>
+    </label>
+    <label>Finish:
+        <select id="finishFilter">
+            <option value="">All</option>
+            <option value="creme">Creme</option><option value="flakie">Flakie</option><option value="glitter">Glitter</option><option value="holographic">Holographic</option><option value="magnetic">Magnetic</option><option value="magnetic topper">Magnetic Topper</option><option value="metallic/pearl">Metallic/Pearl</option><option value="multichrome">Multichrome</option><option value="shimmer">Shimmer</option><option value="thermal">Thermal</option><option value="topper">Topper</option>
+        </select>
+    </label>
+    <label>Search:
+        <input type="text" id="searchInput" placeholder="Name or description">
+    </label>
+    <button onclick="clearFilters()">Clear Filters</button>
+</div>
+
+<h2>🎨 Skittle Mani Builder</h2>
+<div id="skittleBar">Select 2–5 base polishes. Optionally add toppers.</div>
+<button onclick="clearSkittle()">Reset Skittle</button>
+
+<div id="gallery">
+    
+    <div class="card" data-brand="atomic" data-color="pink" data-finish="shimmer" data-name="a day of fallen night" data-topper="false">
+        <img src="atomic_adayoffallennight.jpg" width="100"><br>
+        <strong>Atomic - A Day of Fallen Night</strong><br>
+        Pink | Shimmer<br>
+        Pale pink polish with blue shifting shimmer and holographic flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="atomic" data-color="pink" data-finish="creme" data-name="pastel neon hot pink" data-topper="false">
+        <img src="atomic_pastelneonhotpink.jpg" width="100"><br>
+        <strong>Atomic - Pastel Neon Hot Pink</strong><br>
+        Pink | Creme<br>
+        Bright pink neon creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="atomic" data-color="pink" data-finish="shimmer" data-name="radon" data-topper="false">
+        <img src="atomic_radon.jpg" width="100"><br>
+        <strong>Atomic - Radon</strong><br>
+        Pink | Shimmer<br>
+        Hot pink neon base with a blue/purple shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="bkl" data-color="red" data-finish="magnetic" data-name="arcana" data-topper="false">
+        <img src="bkl_arcana.jpg" width="100"><br>
+        <strong>BKL - Arcana</strong><br>
+        Red | Magnetic<br>
+        Red to gold multichrome with violet to blue magnetic shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="bkl" data-color="purple" data-finish="multichrome" data-name="bad manners" data-topper="false">
+        <img src="bkl_badmanners.jpg" width="100"><br>
+        <strong>BKL - Bad Manners</strong><br>
+        Purple | Multichrome<br>
+        Vibrant purple to green multichrome<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="bkl" data-color="black" data-finish="shimmer" data-name="east" data-topper="false">
+        <img src="bkl_east.jpg" width="100"><br>
+        <strong>BKL - East</strong><br>
+        Black | Shimmer<br>
+        Black with glowy purple shimmer and a ton of holo flakies<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="by dany vianna" data-color="purple" data-finish="multichrome" data-name="alexandrite" data-topper="false">
+        <img src="bydanyvianna_alexandrite.jpg" width="100"><br>
+        <strong>By Dany Vianna - Alexandrite</strong><br>
+        Purple | Multichrome<br>
+        Blue-green-purple multichrome with holographic microparticles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="by dany vianna" data-color="black" data-finish="magnetic" data-name="friends on the other side" data-topper="false">
+        <img src="bydanyvianna_friendsontheotherside.jpg" width="100"><br>
+        <strong>By Dany Vianna - Friends on the Other Side</strong><br>
+        Black | Magnetic<br>
+        Black base with purple reflective glitter, green iridescent flakes, a pink to purple aurora shimmer, a bluish purple magnetic effect and a green glow in the dark effect<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="by dany vianna" data-color="blue" data-finish="magnetic" data-name="hotter than hot" data-topper="false">
+        <img src="bydanyvianna_hotterthanhot.jpg" width="100"><br>
+        <strong>By Dany Vianna - Hotter than Hot</strong><br>
+        Blue | Magnetic<br>
+        Blue jelly base filled with orange reflective glitter and a UCC purple to pink gold magnetic effect<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="by dany vianna" data-color="blue" data-finish="flakie" data-name="rainbow flourite" data-topper="false">
+        <img src="bydanyvianna_rainbowflourite.jpg" width="100"><br>
+        <strong>By Dany Vianna - Rainbow Flourite</strong><br>
+        Blue | Flakie<br>
+        Iridescent flakes, holographic flakes, and aurora pigment<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="by dany vianna" data-color="black" data-finish="magnetic" data-name="rainbow obsidian" data-topper="false">
+        <img src="bydanyvianna_rainbowobsidian.jpg" width="100"><br>
+        <strong>By Dany Vianna - Rainbow Obsidian</strong><br>
+        Black | Magnetic<br>
+        Turquoise/blue/purple magnetic pigment, holographic flakes, magenta irridescent flakes, aurora shimmer, reflective glitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="by dany vianna" data-color="black" data-finish="magnetic" data-name="shadowman" data-topper="false">
+        <img src="bydanyvianna_shadowman.jpg" width="100"><br>
+        <strong>By Dany Vianna - Shadowman</strong><br>
+        Black | Magnetic<br>
+        Smoky black base with red and purple metallic shreds and a red to orange and gold iridescent flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="by dany vianna" data-color="silver" data-finish="magnetic" data-name="smokey quartz" data-topper="false">
+        <img src="bydanyvianna_smokeyquartz.jpg" width="100"><br>
+        <strong>By Dany Vianna - Smokey Quartz</strong><br>
+        Silver | Magnetic<br>
+        Mix of magnetic pigments, UCC flakes and holographic shreds<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="clionadh" data-color="green" data-finish="magnetic" data-name="conocybe" data-topper="false">
+        <img src="clionadh_conocybe.jpg" width="100"><br>
+        <strong>Clionadh - Conocybe</strong><br>
+        Green | Magnetic<br>
+        Lime green-turquoise shifting magnetic flake that reveals red/orange/yellow shifting flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="purple" data-finish="holographic" data-name="amethyst" data-topper="false">
+        <img src="cupcakepolish_amethyst.jpg" width="100"><br>
+        <strong>Cupcake Polish - Amethyst</strong><br>
+        Purple | Holographic<br>
+        Deep purple full coverage holo microglitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="gold" data-finish="holographic" data-name="beauty is everywhere" data-topper="false">
+        <img src="cupcakepolish_beautyiseverywhere.jpg" width="100"><br>
+        <strong>Cupcake Polish - Beauty is Everywhere</strong><br>
+        Gold | Holographic<br>
+        Super sparkly light tan full coverage holo microglitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="purple" data-finish="holographic" data-name="believe" data-topper="false">
+        <img src="cupcakepolish_believe.jpg" width="100"><br>
+        <strong>Cupcake Polish - Believe</strong><br>
+        Purple | Holographic<br>
+        Lavender jelly with super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="blue" data-finish="holographic" data-name="dream" data-topper="false">
+        <img src="cupcakepolish_dream.jpg" width="100"><br>
+        <strong>Cupcake Polish - Dream</strong><br>
+        Blue | Holographic<br>
+        Light blue jelly with super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="pink" data-finish="shimmer" data-name="fuschia rays" data-topper="false">
+        <img src="cupcakepolish_fuschiarays.jpg" width="100"><br>
+        <strong>Cupcake Polish - Fuschia Rays</strong><br>
+        Pink | Shimmer<br>
+        Pink polish packed with purple to blue aurora shimmer and silver holographic glitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="pink" data-finish="flakie" data-name="gamma" data-topper="false">
+        <img src="cupcakepolish_gamma.jpg" width="100"><br>
+        <strong>Cupcake Polish - Gamma</strong><br>
+        Pink | Flakie<br>
+        Neon pink jelly packed with purple/blue/indigo shifting iridescent flakies and a blue shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="teal" data-finish="holographic" data-name="imagine" data-topper="false">
+        <img src="cupcakepolish_imagine.jpg" width="100"><br>
+        <strong>Cupcake Polish - Imagine</strong><br>
+        Teal | Holographic<br>
+        Aqua teal jelly with super holo microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="purple" data-finish="holographic" data-name="jolly" data-topper="false">
+        <img src="cupcakepolish_jolly.jpg" width="100"><br>
+        <strong>Cupcake Polish - Jolly</strong><br>
+        Purple | Holographic<br>
+        Neon purple jelly with full cover super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="red" data-finish="holographic" data-name="lord licorice" data-topper="false">
+        <img src="cupcakepolish_lordlicorice.jpg" width="100"><br>
+        <strong>Cupcake Polish - Lord Licorice</strong><br>
+        Red | Holographic<br>
+        Strawberry red jelly with full cover super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="red" data-finish="shimmer" data-name="magic mushroom" data-topper="false">
+        <img src="cupcakepolish_magicmushroom.jpg" width="100"><br>
+        <strong>Cupcake Polish - Magic Mushroom</strong><br>
+        Red | Shimmer<br>
+        Cool red polish filled with pink/red iridescent shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="purple" data-finish="flakie" data-name="mardi party" data-topper="false">
+        <img src="cupcakepolish_mardiparty.jpg" width="100"><br>
+        <strong>Cupcake Polish - Mardi Party</strong><br>
+        Purple | Flakie<br>
+        Purple jelly with green iridescent flakies and gold, green, and purple metallic flakies<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="pink" data-finish="holographic" data-name="mr. mint" data-topper="false">
+        <img src="cupcakepolish_mr.mint.jpg" width="100"><br>
+        <strong>Cupcake Polish - Mr. Mint</strong><br>
+        Pink | Holographic<br>
+        Bright neon pink jelly packed with full cover super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="silver" data-finish="holographic" data-name="oh ship" data-topper="false">
+        <img src="cupcakepolish_ohship.jpg" width="100"><br>
+        <strong>Cupcake Polish - Oh Ship</strong><br>
+        Silver | Holographic<br>
+        Silver linear holographic with iridescent glitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="green" data-finish="holographic" data-name="plumpy" data-topper="false">
+        <img src="cupcakepolish_plumpy.jpg" width="100"><br>
+        <strong>Cupcake Polish - Plumpy</strong><br>
+        Green | Holographic<br>
+        Grass green jelly with full cover super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="blue" data-finish="holographic" data-name="queen frostine" data-topper="false">
+        <img src="cupcakepolish_queenfrostine.jpg" width="100"><br>
+        <strong>Cupcake Polish - Queen Frostine</strong><br>
+        Blue | Holographic<br>
+        Denim blue jelly with full cover super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="blue" data-finish="holographic" data-name="sapphire" data-topper="false">
+        <img src="cupcakepolish_sapphire.jpg" width="100"><br>
+        <strong>Cupcake Polish - Sapphire</strong><br>
+        Blue | Holographic<br>
+        Deep blue jelly with full cover super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="orange" data-finish="shimmer" data-name="shimmering sunburst" data-topper="false">
+        <img src="cupcakepolish_shimmeringsunburst.jpg" width="100"><br>
+        <strong>Cupcake Polish - Shimmering Sunburst</strong><br>
+        Orange | Shimmer<br>
+        Coral shimmery iridescent with silver holographic glitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="silver" data-finish="topper" data-name="sprinkles" data-topper="true">
+        <img src="cupcakepolish_sprinkles.jpg" width="100"><br>
+        <strong>Cupcake Polish - Sprinkles</strong><br>
+        Silver | Topper<br>
+        Scattered holographic glitter topcoat<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="cupcake polish" data-color="pink" data-finish="holographic" data-name="wish" data-topper="false">
+        <img src="cupcakepolish_wish.jpg" width="100"><br>
+        <strong>Cupcake Polish - Wish</strong><br>
+        Pink | Holographic<br>
+        Light pink jelly with super holographic microglitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="purple" data-finish="shimmer" data-name="always around me" data-topper="false">
+        <img src="emilydemolly_alwaysaroundme.jpg" width="100"><br>
+        <strong>Emily de Molly - Always Around Me</strong><br>
+        Purple | Shimmer<br>
+        Pink-toned purple with a strong blue/purple shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="blue" data-finish="creme" data-name="cobalt dreams" data-topper="false">
+        <img src="emilydemolly_cobaltdreams.jpg" width="100"><br>
+        <strong>Emily de Molly - Cobalt Dreams</strong><br>
+        Blue | Creme<br>
+        Bright cobalt blue creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="pink" data-finish="shimmer" data-name="done it again" data-topper="false">
+        <img src="emilydemolly_doneitagain.jpg" width="100"><br>
+        <strong>Emily de Molly - Done it Again</strong><br>
+        Pink | Shimmer<br>
+        Bright neon pink with a strong blue aurora shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="purple" data-finish="glitter" data-name="eternal forces" data-topper="false">
+        <img src="emilydemolly_eternalforces.jpg" width="100"><br>
+        <strong>Emily de Molly - Eternal Forces</strong><br>
+        Purple | Glitter<br>
+        Purple jelly filled with silver holographic glitters and small iridescent glitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="blue" data-finish="magnetic" data-name="for everybody's sake" data-topper="false">
+        <img src="emilydemolly_foreverybody'ssake.jpg" width="100"><br>
+        <strong>Emily de Molly - For Everybody's Sake</strong><br>
+        Blue | Magnetic<br>
+        Dusty blue with an aqua/blue shifting large particle shimmer and a purple/pink/gold/green shifting magnetic effect<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="green" data-finish="shimmer" data-name="leave a light on" data-topper="false">
+        <img src="emilydemolly_leavealighton.jpg" width="100"><br>
+        <strong>Emily de Molly - Leave a Light On</strong><br>
+        Green | Shimmer<br>
+        Neon green with blue aurora shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="blue" data-finish="glitter" data-name="luminous forces" data-topper="false">
+        <img src="emilydemolly_luminousforces.jpg" width="100"><br>
+        <strong>Emily de Molly - Luminous Forces</strong><br>
+        Blue | Glitter<br>
+        Cobalt blue jelly with silver holographic glitters and small iridescent glitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="green" data-finish="glitter" data-name="mystery mire" data-topper="false">
+        <img src="emilydemolly_mysterymire.jpg" width="100"><br>
+        <strong>Emily de Molly - Mystery Mire</strong><br>
+        Green | Glitter<br>
+        Khaki green with assorted iridescent flakes and matte blue glitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="blue" data-finish="shimmer" data-name="no big deal" data-topper="false">
+        <img src="emilydemolly_nobigdeal.jpg" width="100"><br>
+        <strong>Emily de Molly - No Big Deal</strong><br>
+        Blue | Shimmer<br>
+        Light aqua blue with a green/blue/purple shifting, large particle shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="clear" data-finish="shimmer" data-name="pinkie swear" data-topper="true">
+        <img src="emilydemolly_pinkieswear.jpg" width="100"><br>
+        <strong>Emily de Molly - Pinkie Swear</strong><br>
+        Clear | Shimmer<br>
+        Clear based shimmer topper filled with a pink to orange to gold shifting aurora shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="green" data-finish="shimmer" data-name="say the word" data-topper="false">
+        <img src="emilydemolly_saytheword.jpg" width="100"><br>
+        <strong>Emily de Molly - Say the Word</strong><br>
+        Green | Shimmer<br>
+        Vibrant green polish with an aurora shimmer that shifts through greens and blues<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="blue" data-finish="shimmer" data-name="thin ice" data-topper="false">
+        <img src="emilydemolly_thinice.jpg" width="100"><br>
+        <strong>Emily de Molly - Thin Ice</strong><br>
+        Blue | Shimmer<br>
+        Bright blue polish with strong pink/gold/green large particle shimmer and silver holographic micro flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="pink" data-finish="multichrome" data-name="when the sun leaves" data-topper="false">
+        <img src="emilydemolly_whenthesunleaves.jpg" width="100"><br>
+        <strong>Emily de Molly - When the Sun Leaves</strong><br>
+        Pink | Multichrome<br>
+        Multichrome that shifts between shades of pinks and oranges<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="emily de molly" data-color="nan" data-finish="nan" data-name="nan" data-topper="false">
+        <img src="emilydemolly_nan.jpg" width="100"><br>
+        <strong>Emily de Molly - nan</strong><br>
+        nan | nan<br>
+        <br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="purple" data-finish="shimmer" data-name="grape escape" data-topper="false">
+        <img src="fancygloss_grapeescape.jpg" width="100"><br>
+        <strong>Fancy Gloss - Grape Escape</strong><br>
+        Purple | Shimmer<br>
+        Purple base with strong violet/blue shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="silver" data-finish="holographic" data-name="holo grail" data-topper="false">
+        <img src="fancygloss_holograil.jpg" width="100"><br>
+        <strong>Fancy Gloss - Holo Grail</strong><br>
+        Silver | Holographic<br>
+        Full coverage scattered holo<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="purple" data-finish="topper" data-name="hypnotism" data-topper="true">
+        <img src="fancygloss_hypnotism.jpg" width="100"><br>
+        <strong>Fancy Gloss - Hypnotism</strong><br>
+        Purple | Topper<br>
+        Purple/magenta shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="clear" data-finish="topper" data-name="let it glow aqua green" data-topper="true">
+        <img src="fancygloss_letitglowaquagreen.jpg" width="100"><br>
+        <strong>Fancy Gloss - Let it Glow aqua green</strong><br>
+        Clear | Topper<br>
+        Aqua/green shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="blue" data-finish="topper" data-name="let it glow blue" data-topper="true">
+        <img src="fancygloss_letitglowblue.jpg" width="100"><br>
+        <strong>Fancy Gloss - Let it Glow Blue</strong><br>
+        Blue | Topper<br>
+        Violet/blue shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="purple" data-finish="topper" data-name="let it glow purple pink" data-topper="true">
+        <img src="fancygloss_letitglowpurplepink.jpg" width="100"><br>
+        <strong>Fancy Gloss - Let it Glow Purple Pink</strong><br>
+        Purple | Topper<br>
+        Purple/pink shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="blue" data-finish="magnetic topper" data-name="light blue magnetic top coat" data-topper="true">
+        <img src="fancygloss_lightbluemagnetictopcoat.jpg" width="100"><br>
+        <strong>Fancy Gloss - Light Blue Magnetic Top Coat</strong><br>
+        Blue | Magnetic Topper<br>
+        Blue magnetic topper<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="purple" data-finish="metallic/pearl" data-name="moonberry" data-topper="false">
+        <img src="fancygloss_moonberry.jpg" width="100"><br>
+        <strong>Fancy Gloss - Moonberry</strong><br>
+        Purple | Metallic/Pearl<br>
+        Warm purple base with a metallic/pearl finish and purple sheen<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="purple" data-finish="flakie" data-name="mystic kelpie" data-topper="false">
+        <img src="fancygloss_mystickelpie.jpg" width="100"><br>
+        <strong>Fancy Gloss - Mystic Kelpie</strong><br>
+        Purple | Flakie<br>
+        Purple base with blue/purple shimmer and blue/purple/red/copper flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="clear" data-finish="topper" data-name="ocean quartz" data-topper="true">
+        <img src="fancygloss_oceanquartz.jpg" width="100"><br>
+        <strong>Fancy Gloss - Ocean Quartz</strong><br>
+        Clear | Topper<br>
+        Dark blue/blue shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="iridescent" data-finish="topper" data-name="soap bubble mix" data-topper="true">
+        <img src="fancygloss_soapbubblemix.jpg" width="100"><br>
+        <strong>Fancy Gloss - Soap Bubble Mix</strong><br>
+        Iridescent | Topper<br>
+        Mix of iridescent glitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="teal" data-finish="creme" data-name="tiffany" data-topper="false">
+        <img src="fancygloss_tiffany.jpg" width="100"><br>
+        <strong>Fancy Gloss - Tiffany</strong><br>
+        Teal | Creme<br>
+        Tiffany teal creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="fancy gloss" data-color="clear" data-finish="topper" data-name="travel to neptune" data-topper="true">
+        <img src="fancygloss_traveltoneptune.jpg" width="100"><br>
+        <strong>Fancy Gloss - Travel to Neptune</strong><br>
+        Clear | Topper<br>
+        Dark blue/light blue/purple shimmer topper<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="orange" data-finish="creme" data-name="butterscotch hop" data-topper="false">
+        <img src="holotaco_butterscotchhop.jpg" width="100"><br>
+        <strong>Holo Taco - Butterscotch Hop</strong><br>
+        Orange | Creme<br>
+        Cheery marigold orange<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="purple" data-finish="creme" data-name="cereal killer" data-topper="false">
+        <img src="holotaco_cerealkiller.jpg" width="100"><br>
+        <strong>Holo Taco - Cereal Killer</strong><br>
+        Purple | Creme<br>
+        Vibrant pastel light purple creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="blue" data-finish="creme" data-name="cyantific" data-topper="false">
+        <img src="holotaco_cyantific.jpg" width="100"><br>
+        <strong>Holo Taco - Cyantific</strong><br>
+        Blue | Creme<br>
+        Aqua-blue creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="purple" data-finish="holographic" data-name="electric sweetener" data-topper="false">
+        <img src="holotaco_electricsweetener.jpg" width="100"><br>
+        <strong>Holo Taco - Electric Sweetener</strong><br>
+        Purple | Holographic<br>
+        Intense magenta-purple crushed holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="pink" data-finish="holographic" data-name="menchie the cat" data-topper="false">
+        <img src="holotaco_menchiethecat.jpg" width="100"><br>
+        <strong>Holo Taco - Menchie the Cat</strong><br>
+        Pink | Holographic<br>
+        Baby pink holographic glitter polish packed with micro, small, and medium-sized silver and pink holo glitters in a clear base<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="purple" data-finish="creme" data-name="party of one purple" data-topper="false">
+        <img src="holotaco_partyofonepurple.jpg" width="100"><br>
+        <strong>Holo Taco - Party of One Purple</strong><br>
+        Purple | Creme<br>
+        Bright purple creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="peach" data-finish="holographic" data-name="peach tea" data-topper="false">
+        <img src="holotaco_peachtea.jpg" width="100"><br>
+        <strong>Holo Taco - Peach Tea</strong><br>
+        Peach | Holographic<br>
+        Pastel peach linear holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="purple" data-finish="creme" data-name="peri-social" data-topper="false">
+        <img src="holotaco_perisocial.jpg" width="100"><br>
+        <strong>Holo Taco - Peri-Social</strong><br>
+        Purple | Creme<br>
+        Bright periwinkle creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="holo taco" data-color="pink" data-finish="creme" data-name="what do you pink" data-topper="false">
+        <img src="holotaco_whatdoyoupink.jpg" width="100"><br>
+        <strong>Holo Taco - What Do You Pink</strong><br>
+        Pink | Creme<br>
+        Cool toned bubblegum pink creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="orange" data-finish="magnetic" data-name="amber" data-topper="false">
+        <img src="ilnp_amber.jpg" width="100"><br>
+        <strong>ILNP - Amber</strong><br>
+        Orange | Magnetic<br>
+        Deep terracotta-hued magnetic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="teal" data-finish="holographic" data-name="beach house" data-topper="false">
+        <img src="ilnp_beachhouse.jpg" width="100"><br>
+        <strong>ILNP - Beach House</strong><br>
+        Teal | Holographic<br>
+        Aqua-blue scattered holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="blue" data-finish="holographic" data-name="blowing bubbles" data-topper="false">
+        <img src="ilnp_blowingbubbles.jpg" width="100"><br>
+        <strong>ILNP - Blowing Bubbles</strong><br>
+        Blue | Holographic<br>
+        Sky-blue scattered ultra holo<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="black" data-finish="multichrome" data-name="eclipse" data-topper="false">
+        <img src="ilnp_eclipse.jpg" width="100"><br>
+        <strong>ILNP - Eclipse</strong><br>
+        Black | Multichrome<br>
+        Midnight black ultra chrome with a fiery red color shift<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="orange" data-finish="holographic" data-name="euphoria" data-topper="false">
+        <img src="ilnp_euphoria.jpg" width="100"><br>
+        <strong>ILNP - Euphoria</strong><br>
+        Orange | Holographic<br>
+        Vibrant orange holographic jelly with joyfal orange sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="purple" data-finish="shimmer" data-name="fairy dust" data-topper="false">
+        <img src="ilnp_fairydust.jpg" width="100"><br>
+        <strong>ILNP - Fairy Dust</strong><br>
+        Purple | Shimmer<br>
+        Violet jelly with intense orange sparkle and holographic magic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="pink" data-finish="magnetic" data-name="flip side" data-topper="false">
+        <img src="ilnp_flipside.jpg" width="100"><br>
+        <strong>ILNP - Flip Side</strong><br>
+        Pink | Magnetic<br>
+        Magenta to orange sparkle with blue to teal magnetic pigment<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="pink" data-finish="shimmer" data-name="flower child" data-topper="true">
+        <img src="ilnp_flowerchild.jpg" width="100"><br>
+        <strong>ILNP - Flower Child</strong><br>
+        Pink | Shimmer<br>
+        Sheer soft pink jelly illuminated by a radiant blue shimmer and sprinkled holographic flakes. Can be used as a topper.<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="pink" data-finish="magnetic" data-name="glowstick" data-topper="false">
+        <img src="ilnp_glowstick.jpg" width="100"><br>
+        <strong>ILNP - Glowstick</strong><br>
+        Pink | Magnetic<br>
+        Radiant pink holographic with silver magnetic sparkle blending within the pink-tinged base to take on a peachy hue<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="pink" data-finish="holographic" data-name="gummy bear" data-topper="false">
+        <img src="ilnp_gummybear.jpg" width="100"><br>
+        <strong>ILNP - Gummy Bear</strong><br>
+        Pink | Holographic<br>
+        Vibrant pink jelly base sprinkled with tiny holographic flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="orange" data-finish="magnetic" data-name="hypnosis" data-topper="false">
+        <img src="ilnp_hypnosis.jpg" width="100"><br>
+        <strong>ILNP - Hypnosis</strong><br>
+        Orange | Magnetic<br>
+        Intense wave of orange flickers into teal before slipping through green, gold and violet<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="pink" data-finish="magnetic" data-name="jet setter" data-topper="false">
+        <img src="ilnp_jetsetter.jpg" width="100"><br>
+        <strong>ILNP - Jet Setter</strong><br>
+        Pink | Magnetic<br>
+        Black-based pink nail polish with holographic and color-shifting magnetic pigment<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="blue" data-finish="topper" data-name="looking glass" data-topper="true">
+        <img src="ilnp_lookingglass.jpg" width="100"><br>
+        <strong>ILNP - Looking Glass</strong><br>
+        Blue | Topper<br>
+        Flakie topper shifting through hues of blue, purple, and pink<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="silver" data-finish="holographic" data-name="mega (x)" data-topper="false">
+        <img src="ilnp_megax.jpg" width="100"><br>
+        <strong>ILNP - Mega (X)</strong><br>
+        Silver | Holographic<br>
+        An array of oversized holographic pigments for maximum holographic sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="pink" data-finish="magnetic" data-name="misfit" data-topper="false">
+        <img src="ilnp_misfit.jpg" width="100"><br>
+        <strong>ILNP - Misfit</strong><br>
+        Pink | Magnetic<br>
+        Bold magenta with gold and orange with pink to gold magnetic sparkles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="silver" data-finish="topper" data-name="my private rainbow (ls)" data-topper="true">
+        <img src="ilnp_myprivaterainbowls.jpg" width="100"><br>
+        <strong>ILNP - My Private Rainbow (LS)</strong><br>
+        Silver | Topper<br>
+        Linear and scattered holographic top coat in a clear base<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="blue" data-finish="shimmer" data-name="pool party" data-topper="false">
+        <img src="ilnp_poolparty.jpg" width="100"><br>
+        <strong>ILNP - Pool Party</strong><br>
+        Blue | Shimmer<br>
+        Vivid blue jelly with intense pink center<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="red" data-finish="holographic" data-name="poppy" data-topper="false">
+        <img src="ilnp_poppy.jpg" width="100"><br>
+        <strong>ILNP - Poppy</strong><br>
+        Red | Holographic<br>
+        Poppy red with glowing red sparkle and punchy holographic glimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="blue" data-finish="holographic" data-name="songbird" data-topper="false">
+        <img src="ilnp_songbird.jpg" width="100"><br>
+        <strong>ILNP - Songbird</strong><br>
+        Blue | Holographic<br>
+        Cobalt blue jelly sprinkled with holographic flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="ilnp" data-color="red" data-finish="holographic" data-name="stopping traffic" data-topper="false">
+        <img src="ilnp_stoppingtraffic.jpg" width="100"><br>
+        <strong>ILNP - Stopping Traffic</strong><br>
+        Red | Holographic<br>
+        Fire-engine red laced with an array of holographic pigments<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="kbshimmer" data-color="pink" data-finish="creme" data-name="bored shorts" data-topper="false">
+        <img src="kbshimmer_boredshorts.jpg" width="100"><br>
+        <strong>KBShimmer - Bored Shorts</strong><br>
+        Pink | Creme<br>
+        Faded orchid purple that leans pink<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="kbshimmer" data-color="silver" data-finish="topper" data-name="prism break" data-topper="true">
+        <img src="kbshimmer_prismbreak.jpg" width="100"><br>
+        <strong>KBShimmer - Prism Break</strong><br>
+        Silver | Topper<br>
+        Linear holo topper<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="kbshimmer" data-color="black" data-finish="glitter" data-name="showgirl" data-topper="false">
+        <img src="kbshimmer_showgirl.jpg" width="100"><br>
+        <strong>KBShimmer - Showgirl</strong><br>
+        Black | Glitter<br>
+        Semi-sheer black base with medium-sized rose, small fuschia, pink holographic and square silver glitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="kbshimmer" data-color="blue" data-finish="flakie" data-name="swim pickings" data-topper="false">
+        <img src="kbshimmer_swimpickings.jpg" width="100"><br>
+        <strong>KBShimmer - Swim Pickings</strong><br>
+        Blue | Flakie<br>
+        Vibrant ultramarine jelly with color shifting flakes and a dusting of micro holographic glitters<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="kbshimmer" data-color="black" data-finish="glitter" data-name="you go ghoul" data-topper="false">
+        <img src="kbshimmer_yougoghoul.jpg" width="100"><br>
+        <strong>KBShimmer - You Go Ghoul</strong><br>
+        Black | Glitter<br>
+        Black jelly base with glitters in grape, berry and orange<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="orange" data-finish="creme" data-name="a peach of my heart" data-topper="false">
+        <img src="lynbdesigns_apeachofmyheart.jpg" width="100"><br>
+        <strong>LynBDesigns - A Peach of My Heart</strong><br>
+        Orange | Creme<br>
+        Pastel coral neon creme that glows under black light and watermarbles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="green" data-finish="flakie" data-name="all that" data-topper="false">
+        <img src="lynbdesigns_allthat.jpg" width="100"><br>
+        <strong>LynBDesigns - All That</strong><br>
+        Green | Flakie<br>
+        Green neon jelly with red to orange to yellow shifting flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="pink" data-finish="shimmer" data-name="am i just paranoid of emma stone" data-topper="false">
+        <img src="lynbdesigns_amijustparanoidofemmastone.jpg" width="100"><br>
+        <strong>LynBDesigns - Am I Just Paranoid of Emma Stone</strong><br>
+        Pink | Shimmer<br>
+        Magenta jelly base loaded with aqua to blue to indigo shifting shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="purple" data-finish="flakie" data-name="as if!" data-topper="false">
+        <img src="lynbdesigns_asif!.jpg" width="100"><br>
+        <strong>LynBDesigns - As If!</strong><br>
+        Purple | Flakie<br>
+        Blurple neon jelly filled with red to orange to yellow shifting flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="pink" data-finish="flakie" data-name="bling" data-topper="false">
+        <img src="lynbdesigns_bling.jpg" width="100"><br>
+        <strong>LynBDesigns - Bling</strong><br>
+        Pink | Flakie<br>
+        Neon watermelon jelly loaded with red to orange to yellow shifting flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="blue" data-finish="flakie" data-name="don't go there" data-topper="false">
+        <img src="lynbdesigns_don'tgothere.jpg" width="100"><br>
+        <strong>LynBDesigns - Don't Go There</strong><br>
+        Blue | Flakie<br>
+        Neon blue filled with red to orange to yellow shifting crystal flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="teal" data-finish="shimmer" data-name="echo fabulous 2.0" data-topper="false">
+        <img src="lynbdesigns_echofabulous2.0.jpg" width="100"><br>
+        <strong>LynBDesigns - Echo Fabulous 2.0</strong><br>
+        Teal | Shimmer<br>
+        Neon aqua with small amount of blue to purple to pink shifting shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="orange" data-finish="flakie" data-name="fly" data-topper="false">
+        <img src="lynbdesigns_fly.jpg" width="100"><br>
+        <strong>LynBDesigns - Fly</strong><br>
+        Orange | Flakie<br>
+        Orange red jelly with red to orange to yellow shifting flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="pink" data-finish="shimmer" data-name="juice box hero" data-topper="false">
+        <img src="lynbdesigns_juiceboxhero.jpg" width="100"><br>
+        <strong>LynBDesigns - Juice Box Hero</strong><br>
+        Pink | Shimmer<br>
+        Juicy berry jelly base with blue to purple shifting shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="teal" data-finish="flakie" data-name="let's bounce" data-topper="false">
+        <img src="lynbdesigns_let'sbounce.jpg" width="100"><br>
+        <strong>LynBDesigns - Let's Bounce</strong><br>
+        Teal | Flakie<br>
+        Teal neon jelly filled with red to orange to yellow shifting flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="pink" data-finish="creme" data-name="make my heart beet faster" data-topper="false">
+        <img src="lynbdesigns_makemyheartbeetfaster.jpg" width="100"><br>
+        <strong>LynBDesigns - Make My Heart Beet Faster</strong><br>
+        Pink | Creme<br>
+        Pastel neon magenta creme that watermarbles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="yellow" data-finish="flakie" data-name="no duh" data-topper="false">
+        <img src="lynbdesigns_noduh.jpg" width="100"><br>
+        <strong>LynBDesigns - No Duh</strong><br>
+        Yellow | Flakie<br>
+        Yellow neon jelly filled with red to orange to yellow shifting flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="orange" data-finish="creme" data-name="orange you appealing" data-topper="false">
+        <img src="lynbdesigns_orangeyouappealing.jpg" width="100"><br>
+        <strong>LynBDesigns - Orange You Appealing</strong><br>
+        Orange | Creme<br>
+        Pastel yellow orange neon creme that glows under blacklight and watermarbles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="teal" data-finish="creme" data-name="pear pressure" data-topper="false">
+        <img src="lynbdesigns_pearpressure.jpg" width="100"><br>
+        <strong>LynBDesigns - Pear Pressure</strong><br>
+        Teal | Creme<br>
+        Pastel neon juicy green that watermarbles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="pink" data-finish="thermal" data-name="peony for your thoughts" data-topper="false">
+        <img src="lynbdesigns_peonyforyourthoughts.jpg" width="100"><br>
+        <strong>LynBDesigns - Peony for Your Thoughts</strong><br>
+        Pink | Thermal<br>
+        Bright magenta to pale pink with blue to purple shifting shimmer and scattered holo accents<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="purple" data-finish="creme" data-name="so fig-gin cute" data-topper="false">
+        <img src="lynbdesigns_sofiggincute.jpg" width="100"><br>
+        <strong>LynBDesigns - So Fig-Gin Cute</strong><br>
+        Purple | Creme<br>
+        Pastel neon blue toned purple creme that watermarbles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="purple" data-finish="flakie" data-name="talk to the hand" data-topper="false">
+        <img src="lynbdesigns_talktothehand.jpg" width="100"><br>
+        <strong>LynBDesigns - Talk to the Hand</strong><br>
+        Purple | Flakie<br>
+        Purple jelly base filled with red to orange to yellow shifting flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="orange" data-finish="flakie" data-name="totally buggin" data-topper="false">
+        <img src="lynbdesigns_totallybuggin.jpg" width="100"><br>
+        <strong>LynBDesigns - Totally Buggin</strong><br>
+        Orange | Flakie<br>
+        Orange yellow neon jelly base filled with red to orange to yellow shifting flakies and a touch of holo sparkle<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="purple" data-finish="creme" data-name="ube the judge" data-topper="false">
+        <img src="lynbdesigns_ubethejudge.jpg" width="100"><br>
+        <strong>LynBDesigns - Ube the Judge</strong><br>
+        Purple | Creme<br>
+        Pastel pinky purple neon creme that glows under blacklight and watermarbles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="lynbdesigns" data-color="blue" data-finish="creme" data-name="why so blueraspberry" data-topper="false">
+        <img src="lynbdesigns_whysoblueraspberry.jpg" width="100"><br>
+        <strong>LynBDesigns - Why So BlueRaspberry</strong><br>
+        Blue | Creme<br>
+        Pastel neon aqua creme that watermarbles<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="black" data-finish="magnetic" data-name="a galaxy far away" data-topper="false">
+        <img src="mooncat_agalaxyfaraway.jpg" width="100"><br>
+        <strong>Mooncat - A Galaxy Far Away</strong><br>
+        Black | Magnetic<br>
+        Black magnetic lacquer filled with holographic glitter and a red and blue iridescent flakies that reveals a bright aqua blue magnetic effect<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="purple" data-finish="holographic" data-name="antifragile" data-topper="false">
+        <img src="mooncat_antifragile.jpg" width="100"><br>
+        <strong>Mooncat - Antifragile</strong><br>
+        Purple | Holographic<br>
+        Indigo linear holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="silver" data-finish="holographic" data-name="blame my star sign" data-topper="false">
+        <img src="mooncat_blamemystarsign.jpg" width="100"><br>
+        <strong>Mooncat - Blame my Star Sign</strong><br>
+        Silver | Holographic<br>
+        Charcoal lacquer filled with holographic glitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="brown" data-finish="holographic" data-name="boa constrictor" data-topper="false">
+        <img src="mooncat_boaconstrictor.jpg" width="100"><br>
+        <strong>Mooncat - Boa Constrictor</strong><br>
+        Brown | Holographic<br>
+        Chocolate linear holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="silver" data-finish="magnetic" data-name="death star" data-topper="false">
+        <img src="mooncat_deathstar.jpg" width="100"><br>
+        <strong>Mooncat - Death Star</strong><br>
+        Silver | Magnetic<br>
+        Silver magnetic filled with silver holographic shimmer that reveals a silver magnetic effect<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="black" data-finish="creme" data-name="emo for life" data-topper="false">
+        <img src="mooncat_emoforlife.jpg" width="100"><br>
+        <strong>Mooncat - Emo for Life</strong><br>
+        Black | Creme<br>
+        1 coat ink-black creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="pink" data-finish="flakie" data-name="forces of evil" data-topper="false">
+        <img src="mooncat_forcesofevil.jpg" width="100"><br>
+        <strong>Mooncat - Forces of Evil</strong><br>
+        Pink | Flakie<br>
+        Pink-red jelly packed with color-shifting pink, orange, and blue iridescent flakies and a micro holographic glitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="red" data-finish="shimmer" data-name="freshly bitten" data-topper="false">
+        <img src="mooncat_freshlybitten.jpg" width="100"><br>
+        <strong>Mooncat - Freshly Bitten</strong><br>
+        Red | Shimmer<br>
+        Wine-red lacquer filled with purple-to-pink shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="white" data-finish="shimmer" data-name="ghosts of hecate" data-topper="true">
+        <img src="mooncat_ghostsofhecate.jpg" width="100"><br>
+        <strong>Mooncat - Ghosts of Hecate</strong><br>
+        White | Shimmer<br>
+        Sheer white polish filled with color-shifting blue-to-purple shimmer and a micro holographic glitter. Can be used as a topper.<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="blue" data-finish="flakie" data-name="house of hades" data-topper="false">
+        <img src="mooncat_houseofhades.jpg" width="100"><br>
+        <strong>Mooncat - House of Hades</strong><br>
+        Blue | Flakie<br>
+        Deep blue-purple packed with cobalt ultra-fine flakies<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="pink" data-finish="creme" data-name="lost polaroids" data-topper="false">
+        <img src="mooncat_lostpolaroids.jpg" width="100"><br>
+        <strong>Mooncat - Lost Polaroids</strong><br>
+        Pink | Creme<br>
+        Vibrant fuschia creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="green" data-finish="flakie" data-name="maelstrom" data-topper="false">
+        <img src="mooncat_maelstrom.jpg" width="100"><br>
+        <strong>Mooncat - Maelstrom</strong><br>
+        Green | Flakie<br>
+        Deep blue-green jelly filled with color-shifting green-to-yellow iridescent flakies and a micro holographic glitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="clear" data-finish="topper" data-name="matte made in hell" data-topper="true">
+        <img src="mooncat_mattemadeinhell.jpg" width="100"><br>
+        <strong>Mooncat - Matte Made in Hell</strong><br>
+        Clear | Topper<br>
+        Matte topper<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="pink" data-finish="shimmer" data-name="merkitten" data-topper="false">
+        <img src="mooncat_merkitten.jpg" width="100"><br>
+        <strong>Mooncat - Merkitten</strong><br>
+        Pink | Shimmer<br>
+        Sheer hot pink jelly filled with blue shimmer and super micro holographic glitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="silver" data-finish="topper" data-name="moondust" data-topper="true">
+        <img src="mooncat_moondust.jpg" width="100"><br>
+        <strong>Mooncat - Moondust</strong><br>
+        Silver | Topper<br>
+        Clear topper filled with small holographic glitter<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="silver" data-finish="holographic" data-name="moonflower" data-topper="false">
+        <img src="mooncat_moonflower.jpg" width="100"><br>
+        <strong>Mooncat - Moonflower</strong><br>
+        Silver | Holographic<br>
+        Silver linear holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="pink" data-finish="holographic" data-name="not today satan" data-topper="false">
+        <img src="mooncat_nottodaysatan.jpg" width="100"><br>
+        <strong>Mooncat - Not Today Satan</strong><br>
+        Pink | Holographic<br>
+        Baby pink linear holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="red" data-finish="shimmer" data-name="pandemonium" data-topper="false">
+        <img src="mooncat_pandemonium.jpg" width="100"><br>
+        <strong>Mooncat - Pandemonium</strong><br>
+        Red | Shimmer<br>
+        Red polish filled with color-shifting red-to-orange shimmer<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="purple" data-finish="flakie" data-name="pomegranate seeds" data-topper="false">
+        <img src="mooncat_pomegranateseeds.jpg" width="100"><br>
+        <strong>Mooncat - Pomegranate Seeds</strong><br>
+        Purple | Flakie<br>
+        Reddish purple polish filled with blue shimmer and color-shifting orange-to-pink iridescent flakies<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="purple" data-finish="glitter" data-name="sealed with a hiss" data-topper="false">
+        <img src="mooncat_sealedwithahiss.jpg" width="100"><br>
+        <strong>Mooncat - Sealed with a Hiss</strong><br>
+        Purple | Glitter<br>
+        Duochrome polish filled with holographic glitter that shifts between shades of violet and blue<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="purple" data-finish="glitter" data-name="serpent's tongue" data-topper="false">
+        <img src="mooncat_serpent'stongue.jpg" width="100"><br>
+        <strong>Mooncat - Serpent's Tongue</strong><br>
+        Purple | Glitter<br>
+        Duochrome filled with holographic glitter that shifts between shades of purple and green<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="green" data-finish="multichrome" data-name="serpents of eden" data-topper="false">
+        <img src="mooncat_serpentsofeden.jpg" width="100"><br>
+        <strong>Mooncat - Serpents of Eden</strong><br>
+        Green | Multichrome<br>
+        Multichrome lacquer that shifts between shades of green, teal, yellow, and blue<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="purple" data-finish="holographic" data-name="shattered glass" data-topper="false">
+        <img src="mooncat_shatteredglass.jpg" width="100"><br>
+        <strong>Mooncat - Shattered Glass</strong><br>
+        Purple | Holographic<br>
+        Lilac linear holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="purple" data-finish="flakie" data-name="supervillian" data-topper="false">
+        <img src="mooncat_supervillian.jpg" width="100"><br>
+        <strong>Mooncat - Supervillian</strong><br>
+        Purple | Flakie<br>
+        Multichrome flakie filled with holographic glitter that shifts between shades of blue and purple<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="pink" data-finish="holographic" data-name="venus flytrap" data-topper="false">
+        <img src="mooncat_venusflytrap.jpg" width="100"><br>
+        <strong>Mooncat - Venus Flytrap</strong><br>
+        Pink | Holographic<br>
+        Magenta linear holographic<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="mooncat" data-color="white" data-finish="creme" data-name="white rabbit" data-topper="false">
+        <img src="mooncat_whiterabbit.jpg" width="100"><br>
+        <strong>Mooncat - White Rabbit</strong><br>
+        White | Creme<br>
+        Opaque white creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="olive and june" data-color="teal" data-finish="creme" data-name="all manis on deck" data-topper="false">
+        <img src="oliveandjune_allmanisondeck.jpg" width="100"><br>
+        <strong>Olive and June - All Manis on Deck</strong><br>
+        Teal | Creme<br>
+        Ultra aquatic bright blue-green<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="polished for days" data-color="purple" data-finish="shimmer" data-name="ghoulish" data-topper="false">
+        <img src="polishedfordays_ghoulish.jpg" width="100"><br>
+        <strong>Polished for Days - Ghoulish</strong><br>
+        Purple | Shimmer<br>
+        Deep mullberry purple base with intense blue/purple shimmer and holographic silver flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="rogue lacquer" data-color="teal" data-finish="flakie" data-name="you're invited" data-topper="false">
+        <img src="roguelacquer_you'reinvited.jpg" width="100"><br>
+        <strong>Rogue Lacquer - You're Invited</strong><br>
+        Teal | Flakie<br>
+        Neon turquoise jelly base with blue green glass flakes, magenta and black metallic flakes<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="uberchic" data-color="teal" data-finish="creme" data-name="key largo" data-topper="false">
+        <img src="uberchic_keylargo.jpg" width="100"><br>
+        <strong>UberChic - Key Largo</strong><br>
+        Teal | Creme<br>
+        Neon teal blue creme<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+    <div class="card" data-brand="uberchic" data-color="blue" data-finish="holographic" data-name="mermaid's tale" data-topper="false">
+        <img src="uberchic_mermaid'stale.jpg" width="100"><br>
+        <strong>UberChic - Mermaid's Tale</strong><br>
+        Blue | Holographic<br>
+        Rich purple blue with silver holographic pieces<br>
+        <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+    </div>
+    
+</div>
+
+<script>
+let skittle = [];
+
+function addToSkittle(button) {
+    const card = button.closest('.card');
+    const name = card.querySelector("strong").textContent;
+    const img = card.querySelector("img").src;
+    const isTopper = card.dataset.topper === "true";
+
+    if (!isTopper && skittle.filter(x => !x.topper).length >= 5) {
+        alert("You can only add up to 5 base polishes.");
+        return;
+    }
+
+    if (isTopper && skittle.filter(x => x.topper).length >= 5) {
+        alert("You can only add up to 5 toppers.");
+        return;
+    }
+
+    skittle.push({ name: name, img: img, topper: isTopper });
+    renderSkittle();
+}
+
+function renderSkittle() {
+    const container = document.getElementById("skittleBar");
+    if (skittle.length === 0) {
+        container.innerHTML = "Select 2–5 base polishes. Optionally add toppers.";
+        return;
+    }
+    container.innerHTML = skittle.map((p, i) => `
+        <div style="display:inline-block;margin:5px;text-align:center;">
+            <img src="${p.img}" width="50"><br>${i + 1}. ${p.name}${p.topper ? " (topper)" : ""}
+        </div>
+    `).join("");
+}
+
+function clearSkittle() {
+    skittle = [];
+    renderSkittle();
+}
+
+function filterGallery() {
+    const brand = document.getElementById("brandFilter").value.toLowerCase();
+    const color = document.getElementById("colorFilter").value.toLowerCase();
+    const finish = document.getElementById("finishFilter").value.toLowerCase();
+    const keyword = document.getElementById("searchInput").value.toLowerCase();
+    const cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+        const matchBrand = !brand || card.dataset.brand === brand;
+        const matchColor = !color || card.dataset.color === color;
+        const matchFinish = !finish || card.dataset.finish === finish;
+        const matchKeyword = !keyword || card.textContent.toLowerCase().includes(keyword);
+        card.style.display = (matchBrand && matchColor && matchFinish && matchKeyword) ? "inline-block" : "none";
+    });
+}
+
+function clearFilters() {
+    document.getElementById("brandFilter").value = "";
+    document.getElementById("colorFilter").value = "";
+    document.getElementById("finishFilter").value = "";
+    document.getElementById("searchInput").value = "";
+    filterGallery();
+}
+
+document.getElementById("brandFilter").addEventListener("change", filterGallery);
+document.getElementById("colorFilter").addEventListener("change", filterGallery);
+document.getElementById("finishFilter").addEventListener("change", filterGallery);
+document.getElementById("searchInput").addEventListener("input", filterGallery);
+</script>
+
+</body>
+</html>
