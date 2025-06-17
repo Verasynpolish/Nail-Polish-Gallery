@@ -1200,11 +1200,11 @@ function filterGallery() {
 }
 
 function clearFilters() {
-    document.getElementById("brandFilter").value = "";
-    document.getElementById("colorFilter").value = "";
-    document.getElementById("finishFilter").value = "";
-    document.getElementById("searchInput").value = "";
-    filterGallery();
+  document.querySelectorAll('#brandFilter, #colorFilter, #finishFilter').forEach(select => {
+    Array.from(select.options).forEach(option => option.selected = false);
+  });
+  document.getElementById('searchInput').value = '';
+  filterGallery();
 }
 
 document.getElementById("brandFilter").addEventListener("change", filterGallery);
