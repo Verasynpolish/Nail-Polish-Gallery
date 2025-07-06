@@ -18,7 +18,7 @@
 <label>Brand:
         <select id="brandFilter" multiple="" style="height:100px;">
 <option value="">All</option>
-<option value="atomic">Atomic</option><option value="bkl">BKL</option><option value="by dany vianna">By Dany Vianna</option><option value="cadillacquer">Cadillacquer</option><option value="clionadh">Clionadh</option><option value="cupcake polish">Cupcake Polish</option><option value="emily de molly">Emily de Molly</option><option value="fancy gloss">Fancy Gloss</option><option value="holo taco">Holo Taco</option><option value="ilnp">ILNP</option><option value="kbshimmer">KBShimmer</option><option value="lynbdesigns">LynBDesigns</option><option value="monarchlacquer">Monarch Lacquer</option><option value="mooncat">Mooncat</option><option value="nailed it">Nailed It</option><option value="night owl lacquer">Night Owl Lacquer</option><option value="olive and june">Olive and June</option><option value="polished for days">Polished for Days</option><option value="rogue lacquer">Rogue Lacquer</option><option value="uberchic">UberChic</option><option value="whats up nails">Whats Up Nails</option>
+<option value="bkl">Ahmya Cosmetics</option><option value="atomic">Atomic</option><option value="bkl">BCB</option><option value="bkl">BKL</option><option value="by dany vianna">By Dany Vianna</option><option value="cadillacquer">Cadillacquer</option><option value="clionadh">Clionadh</option><option value="cupcake polish">Cupcake Polish</option><option value="emily de molly">Emily de Molly</option><option value="fancy gloss">Fancy Gloss</option><option value="holo taco">Holo Taco</option><option value="ilnp">ILNP</option><option value="kbshimmer">KBShimmer</option><option value="lynbdesigns">LynBDesigns</option><option value="monarchlacquer">Monarch Lacquer</option><option value="mooncat">Mooncat</option><option value="nailed it">Nailed It</option><option value="night owl lacquer">Night Owl Lacquer</option><option value="olive and june">Olive and June</option><option value="bkl">Penelope Luz</option><option value="polished for days">Polished for Days</option><option value="rogue lacquer">Rogue Lacquer</option><option value="bkl">Tyler's Trinkets</option><option value="uberchic">UberChic</option><option value="whats up nails">Whats Up Nails</option>
 </select>
 </label>
 <label>Color:
@@ -47,6 +47,14 @@
 <strong>Atomic - A Day of Fallen Night</strong><br/>
         Pink | Shimmer<br/>
         Pale pink polish with blue shifting shimmer and holographic flakes<br/>
+<button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+</div>
+<div class="card" data-brand="ahmya" data-color="blue" data-finish="shimmer" data-name="orion" data-topper="false">
+<a href="ahmya_orion.jpg" target="_blank">
+<img src="ahmya_orion.jpg" width="100"/></a><br/>
+<strong>Ahyma - Orion</strong><br/>
+        Blue | Shimmer<br/>
+        Periwinkle base with blue shimmer<br/>
 <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
 </div>
 <div class="card" data-brand="atomic" data-color="pink" data-finish="creme" data-name="bleeding heart" data-topper="false">
@@ -97,6 +105,14 @@
 <strong>Atomic - Spoonbill</strong><br/>
         Pink | Creme<br/>
         Matte neon hot pink<br/>
+<button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+</div>
+<div class="card" data-brand="bcb" data-color="coral" data-finish="shimmer" data-name="beyond the sunset leads my way" data-topper="false">
+<a href="bcb_beyondthesunset.jpg" target="_blank">
+<img src="bcb_beyondthesunset.jpg" width="100"/></a><br/>
+<strong>BCB Lacquers - Beyond the Sunset Leads my Way</strong><br/>
+        Coral | Shimmer<br/>
+        Orange coral neon crelly with a purple/pink shimmer<br/>
 <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
 </div>
 <div class="card" data-brand="bkl" data-color="red" data-finish="magnetic" data-name="arcana" data-topper="false">
@@ -729,6 +745,14 @@
         Linear holo topper<br/>
 <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
 </div>
+<div class="card" data-brand="kbshimmer" data-color="green" data-finish="shimmer" data-name="reach for the stars" data-topper="false">
+<a href="kbshimmer_reachforthestars.jpg" target="_blank">
+<img src="kbshimmer_reachforthestars" width="100"/></a><br/>
+<strong>KBShimmer - Reach for the Stars</strong><br/>
+        Green | Shimmer<br/>
+        Pale yellow-green with a golden shimmer and green glow in the dark glow<br/>
+<button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+</div>
 <div class="card" data-brand="kbshimmer" data-color="black" data-finish="glitter" data-name="showgirl" data-topper="false">
 <img src="kbshimmer_showgirl.jpg" width="100"/><br/>
 <strong>KBShimmer - Showgirl</strong><br/>
@@ -1257,6 +1281,14 @@
         Ultra aquatic bright blue-green<br/>
 <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
 </div>
+<div class="card" data-brand="penelope luz" data-color="blue" data-finish="magnetic" data-name="butterfly wings" data-topper="false">
+<a href="penelope_butterflywings.jpg" target="_blank">
+<img src="penelope_butterflywings.jpg" width="100"/></a><br/>
+<strong>Penelope Luz - Butterfly Wings</strong><br/>
+        Blue | Magnetic<br/>
+        Blurple base with magnetic salmon/orange/gold pigments<br/>
+<button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+</div>
 <div class="card" data-brand="polished for days" data-color="purple" data-finish="shimmer" data-name="ghoulish" data-topper="false">
 <img src="polishedfordays_ghoulish.jpg" width="100"/><br/>
 <strong>Polished for Days - Ghoulish</strong><br/>
@@ -1269,6 +1301,14 @@
 <strong>Rogue Lacquer - You're Invited</strong><br/>
         Teal | Flakie<br/>
         Neon turquoise jelly base with blue green glass flakes, magenta and black metallic flakes<br/>
+<button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
+</div>
+<div class="card" data-brand="tyler's trinkets" data-color="pink" data-finish="flakie" data-name="science is pretty" data-topper="false">
+<a href="tylers_scienceispretty.jpg" target="_blank">
+<img src="tylers_scienceispretty.jpg" width="100"/></a><br/>
+<strong>Tyler's Trinkets - Science is Pretty</strong><br/>
+        Pink | Flakie<br/>
+        Bright neon magenta base with pink/teal/blue/green iridescent flakes, a touch of aurora shimmer, scattered turquoise reflective glitter and a sky-blue glow in the dark pigment<br/>
 <button onclick="addToSkittle(this)">🎨 Add to Skittle</button>
 </div>
 <div class="card" data-brand="uberchic" data-color="teal" data-finish="creme" data-name="key largo" data-topper="false">
